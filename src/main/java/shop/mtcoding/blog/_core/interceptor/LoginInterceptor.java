@@ -19,15 +19,13 @@ public class LoginInterceptor implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         //Bearer jwt토근
-        String  jwt = request.getHeader("Autorization");
+        String  jwt = request.getHeader("Authorization");
 
         if (jwt == null){ //필터에서 하면 어렵다  그래서 인터셉터에서 한다.
             throw new Exception401("jwt 토큰을 전달해주세요");
         }
 
         jwt = jwt.replace("Bearer ", "");
-
-
 
         //검증
         try {
