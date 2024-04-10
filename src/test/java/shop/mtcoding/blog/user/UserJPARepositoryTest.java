@@ -21,6 +21,24 @@ public class UserJPARepositoryTest {
     @Autowired
     private UserJPARepository userJPARepository;
 
+
+
+    @Test
+    public void SessionUserFindById(){
+        // given
+        int sessionUserId = 1;
+
+        SessionUser sessionUser = SessionUser.builder()
+                .id(sessionUserId)
+                .build();
+
+        // when
+        Optional<User> user =userJPARepository.findById(sessionUser.getId());
+        System.out.println(user);
+
+        // then
+    }
+
     @Test
     public void findByUsernameAndPassword_test(){
         // given
